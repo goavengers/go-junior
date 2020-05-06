@@ -5,11 +5,11 @@
 
 ### Как установить Go?
 
-1. Скачать исходники: `wget https://dl.google.com/go/go$VERSION.$OS-$ARCH.tar.gz`
-2. Распаковать: `tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz`
-3. Установить переменные окружения: 
+1. Скачайте исходники: `wget https://dl.google.com/go/go$VERSION.$OS-$ARCH.tar.gz`
+2. Распакуйте: `tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz`
+3. Установите переменные окружения.
 
-Для этого откройте ваш `.profile` файл и добавьте глобальную переменную в конец файла. Вы можете добавить это в файл `.zshrc` или `.bashrc` в соответствии с вашей конфигурацией оболочки.
+> Для этого откройте ваш `.profile` файл и добавьте глобальную переменную в конец файла. Вы можете добавить это в файл `.zshrc` или `.bashrc` в соответствии с вашей конфигурацией оболочки.
 
 ```bash
 export GOROOT=/usr/local/go
@@ -17,4 +17,4 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 ```
 
-4. Выполните, чтобы изменения вступили в силу: `source ~/.profile` или `.bashrc`, `.zshrc`
+4. Выполните, чтобы изменения вступили в силу: `source ~/.profile` или `.bashrc`, `.zshrc` - это позволит использовать команды go без перезапуска сеанса.
