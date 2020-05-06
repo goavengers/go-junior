@@ -21,3 +21,9 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 ```
 
 4. Выполните, чтобы изменения вступили в силу: `source ~/.profile` или `.bashrc`, `.zshrc` - это позволит использовать команды go без перезапуска сеанса.
+
+### Что дальше?
+
+- [A Tour of Go](https://tour.golang.org/welcome/1)
+- [How to Write Go Code](https://golang.org/doc/code.html)
+- [Effective Go](https://golang.org/doc/effective_go.html) | [Эффективный Go](https://github.com/Konstantin8105/Effective_Go_RU)
