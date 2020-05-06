@@ -27,3 +27,4 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 - [A Tour of Go](https://tour.golang.org/welcome/1)
 - [How to Write Go Code](https://golang.org/doc/code.html)
 - [Effective Go](https://golang.org/doc/effective_go.html) | [Эффективный Go](https://github.com/Konstantin8105/Effective_Go_RU)
+- [Маленькая книга о Go – Глава 1: Основы](https://sefus.ru/little-go-book-1/)
