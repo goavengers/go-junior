@@ -6,6 +6,9 @@
 ### Как установить Go?
 
 1. Скачайте исходники: `wget https://dl.google.com/go/go$VERSION.$OS-$ARCH.tar.gz`
+
+> Чтобы понять для какой архитектуры и какую версию Go скачивать посетите сайт: https://golang.org/dl/
+
 2. Распакуйте: `tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz`
 3. Установите переменные окружения.
 
