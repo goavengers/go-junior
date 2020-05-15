@@ -44,6 +44,10 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 - [Обработка времени в go | time in go](https://bl.ocks.org/joyrexus/a56717634a672dcdfd48)
 - [Как использовать интерфейсы в Go | How to use interfaces in Go](https://jordanorelli.com/post/32665860244/how-to-use-interfaces-in-go)
 
+### Конкурентность
+
+- [Состояние гонки по данным и способы решения](https://www.sohamkamani.com/blog/2018/02/18/golang-data-race-and-how-to-fix-it/)
+
 ### Полезные ништячки
 
 - [Modern Make](https://makefile.site/)
