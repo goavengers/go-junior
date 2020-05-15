@@ -33,3 +33,9 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 - [Effective Go](https://golang.org/doc/effective_go.html) | [Эффективный Go](https://github.com/Konstantin8105/Effective_Go_RU)
 - [Маленькая книга о Go – Глава 1: Основы](https://sefus.ru/little-go-book-1/)
 - [Awesome Go](https://github.com/avelino/awesome-go)
+- [Modern Make](https://makefile.site/)
+- [What is REST](https://restfulapi.net/)
+- [Двенадцать факторов](https://12factor.net/ru/)
+- [Semantic Versioning](https://semver.org/)
+
+
