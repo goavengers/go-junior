@@ -43,6 +43,8 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 - [Руководства по стилю для пакетов Go | Style guideline for Go packages](https://rakyll.org/style-packages/)
 - [Обработка времени в go | time in go](https://bl.ocks.org/joyrexus/a56717634a672dcdfd48)
 - [Как использовать интерфейсы в Go | How to use interfaces in Go](https://jordanorelli.com/post/32665860244/how-to-use-interfaces-in-go)
+- [Лучшие практики Go, шесть лет в деле](https://habr.com/ru/company/mailru/blog/301036/)
+- [Отличительные особенности хорошей библиотеки на языке Go](https://medium.com/@cep21/aspects-of-a-good-go-library-7082beabb403)
 
 ### Конкурентность
 
