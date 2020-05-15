@@ -37,5 +37,6 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 - [What is REST](https://restfulapi.net/)
 - [Двенадцать факторов](https://12factor.net/ru/)
 - [Semantic Versioning](https://semver.org/)
+- [Шпаргалка по git-flow](https://danielkummer.github.io/git-flow-cheatsheet/index.ru_RU.html)
 
 
