@@ -33,6 +33,19 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 - [Effective Go](https://golang.org/doc/effective_go.html) | [Эффективный Go](https://github.com/Konstantin8105/Effective_Go_RU)
 - [Маленькая книга о Go – Глава 1: Основы](https://sefus.ru/little-go-book-1/)
 - [Awesome Go](https://github.com/avelino/awesome-go)
+- [Идиомы Go | Idiomatic Go](https://dmitri.shuralyov.com/idiomatic-go)
+- [Основные комментарии, возникающие при ревью кода | Go Code Review Comments](https://github.com/golang/go/wiki/CodeReviewComments)
+- [Организация программного кода | Organizing Go code](https://blog.golang.org/organizing-go-code)
+- [Пословицы Go | Go Proverbs](https://go-proverbs.github.io/)
+- [Структуризация тестов | Structuring Tests in Go](https://medium.com/@benbjohnson/structuring-tests-in-go-46ddee7a25c)
+- [Стандартный шаблон пакета | Standard Package Layout](https://medium.com/@benbjohnson/standard-package-layout-7cdbc8391fc1#.h1wq1b1yt)
+- [Анатомия проекта на Go | The anatomy of a Go project](https://darian.af/post/the-anatomy-of-a-golang-project/)
+- [Руководства по стилю для пакетов Go | Style guideline for Go packages](https://rakyll.org/style-packages/)
+- [Обработка времени в go | time in go](https://bl.ocks.org/joyrexus/a56717634a672dcdfd48)
+- [Как использовать интерфейсы в Go | How to use interfaces in Go](https://jordanorelli.com/post/32665860244/how-to-use-interfaces-in-go)
+
+### Полезные ништячки
+
 - [Modern Make](https://makefile.site/)
 - [What is REST](https://restfulapi.net/)
 - [Двенадцать факторов](https://12factor.net/ru/)
