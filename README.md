@@ -49,6 +49,10 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 ### Конкурентность
 
 - [Состояние гонки по данным и способы решения](https://www.sohamkamani.com/blog/2018/02/18/golang-data-race-and-how-to-fix-it/)
+- [Использование контекстов для того, чтобы избежать утечек горутин](https://rakyll.org/leakingctx/)
+- [Паттерны конкурентности в Go: пайплайны и отмены](https://blog.golang.org/pipelines)
+- [Туториал: Синхронизация состояния с мьютексами в Go](https://kylewbanks.com/blog/tutorial-synchronizing-state-with-mutexes-golang)
+- [Буферизованные каналы в Go: советы и рекомендации](https://www.rapidloop.com/blog/golang-channels-tips-tricks.html)
 
 ### Полезные ништячки
 
