@@ -39,5 +39,6 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 - [Semantic Versioning](https://semver.org/)
 - [Шпаргалка по git-flow](https://danielkummer.github.io/git-flow-cheatsheet/index.ru_RU.html)
 - [ведите changelog](https://keepachangelog.com/ru/1.0.0/)
+- [Работа с ssh-agent](SSH.md)
 
 
