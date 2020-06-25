@@ -58,7 +58,6 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 - [Как использовать интерфейсы в Go | How to use interfaces in Go](https://jordanorelli.com/post/32665860244/how-to-use-interfaces-in-go)
 - [Лучшие практики Go, шесть лет в деле](https://habr.com/ru/company/mailru/blog/301036/)
 - [Отличительные особенности хорошей библиотеки на языке Go](https://medium.com/@cep21/aspects-of-a-good-go-library-7082beabb403)
-- [Токен авторизация в микросервисах Go | Token Based Authentication in Go Microservices](http://learningprogramming.net/golang/microservices/token-based-authentication-in-go-microservices/)
 
 ### Конкурентность
 
@@ -67,6 +66,11 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 - [Паттерны конкурентности в Go: пайплайны и отмены](https://blog.golang.org/pipelines)
 - [Туториал: Синхронизация состояния с мьютексами в Go](https://kylewbanks.com/blog/tutorial-synchronizing-state-with-mutexes-golang)
 - [Буферизованные каналы в Go: советы и рекомендации](https://www.rapidloop.com/blog/golang-channels-tips-tricks.html)
+
+### gRPC
+
+- [Токен авторизация в микросервисах Go | Token Based Authentication in Go Microservices](http://learningprogramming.net/golang/microservices/token-based-authentication-in-go-microservices/)
+- [Написание и использование interveptors](https://medium.com/@shijuvar/writing-grpc-interceptors-in-go-bf3e7671fe48)
 
 ### Полезные ништячки
 
