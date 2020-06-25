@@ -69,6 +69,7 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 ### gRPC
 
+- [Видеоурок о gRPC](https://youtu.be/VtX9w8uKvEk)
 - [Токен авторизация в микросервисах Go | Token Based Authentication in Go Microservices](http://learningprogramming.net/golang/microservices/token-based-authentication-in-go-microservices/)
 - [Написание и использование interveptors](https://medium.com/@shijuvar/writing-grpc-interceptors-in-go-bf3e7671fe48)
 
