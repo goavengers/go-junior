@@ -18,11 +18,11 @@ __Go__ или __GoLang__ — компилируемый многопоточны
 
 ### Как установить Go?
 
-1. Скачайте исходники: `wget https://dl.google.com/go/go$VERSION.$OS-$ARCH.tar.gz`
+1. Скачайте исходники: `$ wget https://dl.google.com/go/go$VERSION.$OS-$ARCH.tar.gz`
 
 > Чтобы понять для какой архитектуры и какую версию Go скачивать посетите сайт: https://golang.org/dl/
 
-2. Распакуйте: `tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz`
+2. Распакуйте: `$ tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz`
 3. Установите переменные окружения.
 
 > Для этого откройте ваш `.profile` файл и добавьте следующие 3 строки в конец файла. Вы можете добавить это в файл `.zshrc` или `.bashrc` в соответствии с вашей конфигурацией оболочки.
@@ -32,6 +32,8 @@ export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 ```
+
+P.S. `$ echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile`
 
 4. Выполните, чтобы изменения вступили в силу: `source ~/.profile` или `.bashrc`, `.zshrc` - это позволит использовать команды go без перезапуска сеанса.
 
