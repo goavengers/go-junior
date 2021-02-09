@@ -44,6 +44,7 @@ P.S. `$ echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile`
 ### Что дальше?
 
 - [A Tour of Go](https://tour.golang.org/welcome/1)
+- [Golang - изучаем зяык программирования GO](https://golangs.org/)
 - [How to Write Go Code](https://golang.org/doc/code.html)
 - [Effective Go](https://golang.org/doc/effective_go.html) | [Эффективный Go](https://github.com/Konstantin8105/Effective_Go_RU)
 - [Маленькая книга о Go – Глава 1: Основы](https://sefus.ru/little-go-book-1/)
@@ -88,4 +89,6 @@ P.S. `$ echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile`
 - [ведите changelog](https://keepachangelog.com/ru/1.0.0/)
 - [Работа с ssh-agent](SSH.md)
 
+### Roadmaps
 
+- [Roadmap to becoming a Go developer](https://github.com/Alikhll/golang-developer-roadmap)
