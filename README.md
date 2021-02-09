@@ -61,6 +61,7 @@ P.S. `$ echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile`
 - [Лучшие практики Go, шесть лет в деле](https://habr.com/ru/company/mailru/blog/301036/)
 - [Отличительные особенности хорошей библиотеки на языке Go](https://medium.com/@cep21/aspects-of-a-good-go-library-7082beabb403)
 - [Код-стайл в Go](https://github.com/golang/go/wiki/CodeReviewComments)
+- [Шпаргалка по слайсам | Go Slice Tricks Cheat Sheet](https://ueokande.github.io/go-slice-tricks/)
 
 ### Конкурентность
 
