@@ -65,6 +65,7 @@ P.S. `$ echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile`
 
 ### Конкурентность
 
+- [Concurrency in Go (book)](./books/Concurrency%20in%20Go.pdf)
 - [Состояние гонки по данным и способы решения](https://www.sohamkamani.com/blog/2018/02/18/golang-data-race-and-how-to-fix-it/)
 - [Использование контекстов для того, чтобы избежать утечек горутин](https://rakyll.org/leakingctx/)
 - [Паттерны конкурентности в Go: пайплайны и отмены](https://blog.golang.org/pipelines)
