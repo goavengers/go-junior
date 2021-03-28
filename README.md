@@ -14,9 +14,11 @@
   - [x] [Полезные ништячки](#what_s_next_useful)
   - [x] [Roadmap golang developer](#what_s_next_roadmap)
 - [x] [Подводные камни Go для начинающих](#darker_corners)
-  - [ ] [Операторы](#darker_corners_operators)
+  - [x] [Операторы](#darker_corners_operators)
      - [x] [Инкремент и декремент](#darker_corners_operators_1)
      - [x] [Тернарный оператор](#darker_corners_operators_2)
+  - [x] [Константы](#darker_corners_constants)
+     - [x] [iota](#darker_corners_constants_1)
 
 __Go__ или __GoLang__ — компилируемый многопоточный язык программирования. Язык был разработан Google для решения проблем корпорации, возникающих при разработке программного обеспечения.
 
@@ -133,3 +135,108 @@ slice[i++] = 0 // syntax error: unexpected ++, expecting :
 <a name="darker_corners_operators_2"></a> **2. Тернарный оператор**
 
 Наверное одна из самых частых вещей, которые ищут разработчики перешедшие с других языков - это тернарный оператор. Но тут все просто - его нет. Разработчики языка Go решили, что этот оператор часто приводит к некрасивому коду, и лучше вообще его не использовать.
+
+#### <a name="darker_corners_constants"> Константы
+
+<a name="darker_corners_constants_2">**iota**
+
+- Ключевое слово iota представляет последовательные целочисленные константы 0, 1, 2,…
+- Оно обнуляется каждый раз, когда const появляется в исходном коде
+- И увеличивается после каждой спецификации const.
+
+```go
+const (
+    C0 = iota
+    C1 = iota
+    C2 = iota
+)
+fmt.Println(C0, C1, C2) // "0 1 2"
+```
+
+Можно упростить до:
+
+```go
+const (
+    C0 = iota
+    C1
+    C2
+)
+```
+
+Двойное использование йоты не сбрасывает нумерацию:
+
+```go
+const (
+    C0 = iota // 0
+    C1 // 1
+    C2 = iota // 2
+)
+```
+
+Чтобы начать список констант с 1 вместо 0, можно использовать iota в арифметическом выражении.
+
+```go
+const (
+    C1 = iota + 1
+    C2
+    C3
+)
+fmt.Println(C1, C2, C3) // "1 2 3"
+```
+
+Можно использовать пустой идентификатор, чтобы пропустить значение в списке констант.
+
+```go
+const (
+    C1 = iota + 1
+    _
+    C3
+    C4
+)
+fmt.Println(C1, C3, C4) // "1 3 4"
+```
+
+Полный тип enum со строками [best practice]. Вот идиоматический способ реализации перечисляемого типа:
+
+- создаем новый целочисленный тип,
+- перечисляем его значения с использованием iota,
+- реализуем для типа функцию String.
+
+```go
+type Direction int
+
+const (
+    North Direction = iota
+    East
+    South
+    West
+)
+
+func (d Direction) String() string {
+    return [...]string{"North", "East", "South", "West"}[d]
+}
+```
+
+```go
+// usage
+
+var d Direction = North
+fmt.Print(d)
+switch d {
+case North:
+    fmt.Println(" goes up.")
+case South:
+    fmt.Println(" goes down.")
+default:
+    fmt.Println(" stays put.")
+}
+// Output: North goes up.
+```
+
+> По стандартному соглашению об именовании, необходимо использовать смешанный caps и для для констант. 
+> Например, экспортируемую константу будет правильным назвать NorthWest, а не NORTH_WEST.
+
+Другое распространенное приложение для iota — реализация bitmask. 
+Это небольшой набор булевых значений (их часто называют “флагами”), которые представлены битами в одном числе.
+
+Посмотрите [bitmasks](https://yourbasic.org/golang/bitmask-flag-set-clear/) и флаги для полного понимания.
