@@ -14,9 +14,9 @@
   - [x] [Полезные ништячки](#what_s_next_useful)
   - [x] [Roadmap golang developer](#what_s_next_roadmap)
 - [x] [Подводные камни Go для начинающих](#darker_corners)
-  - [ ] Операторы
-     - [ ] Инкремент и декремент
-     - [ ] Тернарный оператор
+  - [ ] [Операторы](#darker_corners_operators)
+     - [ ] [Инкремент и декремент](#darker_corners_operators_1)
+     - [ ] [Тернарный оператор](#darker_corners_operators_2)
 
 __Go__ или __GoLang__ — компилируемый многопоточный язык программирования. Язык был разработан Google для решения проблем корпорации, возникающих при разработке программного обеспечения.
 
@@ -110,4 +110,10 @@ P.S. `$ echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile`
 
 ### <a name="darker_corners"></a>  Подвоные камни языка Go для начинающих
 
-- 
+#### <a name="darker_corners_operators"></a> Операторы
+
+<a name="darker_corners_operators_1"></a> **1. Инкремент и декремент**
+
+
+
+<a name="darker_corners_operators_2"></a> **2. Тернарный оператор**
