@@ -3,9 +3,21 @@
   <h5>Возможно вы заблудились и искали официальную документацию, но поверьте у нас не хуже - тут есть все-что нужно новичкам, плюс вкусняшечки! :sunglasses:</h5>
 </div>
 
+### Содержание
+
+- [x] [Основные особенности языка](#features)
+- [x] [Как установить Go?](#how_to_install)
+- [x] [Управление версиями Go](#version_control)
+- [x] [Что дальше?](#what_s_next)
+  - [x] [Конкурентность](#what_s_next_concurrency)
+  - [x] [gRPC](#what_s_next_grpc)
+  - [x] [Полезные ништячки](#what_s_next_useful)
+  - [x] [Roadmap golang developer](#what_s_next_roadmap)
+- [x] [Подводные камни Go для начинающих](#darker_corners)
+
 __Go__ или __GoLang__ — компилируемый многопоточный язык программирования. Язык был разработан Google для решения проблем корпорации, возникающих при разработке программного обеспечения.
 
-**Основные особенности языка:**
+<a name="features"></a> **Основные особенности языка:**
 
 - __Ортогональность__ — в языке есть небольшое число средств, не повторяющих функциональность друг друга.
 - __Простая грамматика__ — минимум ключевых слов, легко разбираемая структура и читаемый код.
@@ -16,7 +28,7 @@ __Go__ или __GoLang__ — компилируемый многопоточны
 - Чёткое разделение интерфейса и реализации.
 - Быстрая сборка за счёт эффективной системы пакетов с явным указанием зависимостей.
 
-### Как установить Go?
+### <a name="how_to_install"></a>  Как установить Go?
 
 1. Скачайте исходники: `$ wget https://dl.google.com/go/go$VERSION.$OS-$ARCH.tar.gz`
 
@@ -37,11 +49,11 @@ P.S. `$ echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile`
 
 4. Выполните, чтобы изменения вступили в силу: `source ~/.profile` или `.bashrc`, `.zshrc` - это позволит использовать команды go без перезапуска сеанса.
 
-### Управление версиями Go
+### <a name="version_control"></a>  Управление версиями Go
 
 Используйте [goenv](https://github.com/syndbg/goenv), чтобы выбрать версию Go для своего приложения и гарантировать, что ваша среда разработки соответствует производственной.
 
-### Что дальше?
+### <a name="what_s_next"></a>  Что дальше?
 
 - [A Tour of Go](https://tour.golang.org/welcome/1)
 - [Golang - изучаем зяык программирования GO](https://golangs.org/)
@@ -64,7 +76,7 @@ P.S. `$ echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile`
 - [Код-стайл в Go](https://github.com/golang/go/wiki/CodeReviewComments)
 - [Шпаргалка по слайсам | Go Slice Tricks Cheat Sheet](https://ueokande.github.io/go-slice-tricks/)
 
-### Конкурентность
+### <a name="what_s_next_concurrency"></a> Конкурентность
 
 - [Concurrency in Go (book)](https://github.com/goavengers/go-junior/raw/master/books/Concurrency%20in%20Go.pdf)
 - [Состояние гонки по данным и способы решения](https://www.sohamkamani.com/blog/2018/02/18/golang-data-race-and-how-to-fix-it/)
@@ -73,13 +85,13 @@ P.S. `$ echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile`
 - [Туториал: Синхронизация состояния с мьютексами в Go](https://kylewbanks.com/blog/tutorial-synchronizing-state-with-mutexes-golang)
 - [Буферизованные каналы в Go: советы и рекомендации](https://www.rapidloop.com/blog/golang-channels-tips-tricks.html)
 
-### gRPC
+### <a name="what_s_next_grpc"></a> gRPC
 
 - [Видеоурок о gRPC](https://youtu.be/VtX9w8uKvEk)
 - [Токен авторизация в микросервисах Go | Token Based Authentication in Go Microservices](http://learningprogramming.net/golang/microservices/token-based-authentication-in-go-microservices/)
 - [Написание и использование interveptors](https://medium.com/@shijuvar/writing-grpc-interceptors-in-go-bf3e7671fe48)
 
-### Полезные ништячки
+### <a name="what_s_next_useful"></a> Полезные ништячки
 
 - [Modern Make](https://makefile.site/)
 - [What is REST](https://restfulapi.net/)
@@ -89,6 +101,9 @@ P.S. `$ echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile`
 - [ведите changelog](https://keepachangelog.com/ru/1.0.0/)
 - [Работа с ssh-agent](SSH.md)
 
-### Roadmaps
+### <a name="what_s_next_roadmap"></a> Roadmaps
 
 - [Roadmap to becoming a Go developer](https://github.com/Alikhll/golang-developer-roadmap)
+
+### <a name="darker_corners"></a>  Подвоные камни языка Go для начинающих
+
