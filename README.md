@@ -138,7 +138,7 @@ slice[i++] = 0 // syntax error: unexpected ++, expecting :
 
 #### <a name="darker_corners_constants"> Константы
 
-<a name="darker_corners_constants_2">**iota**
+<a name="darker_corners_constants_1">**iota**
 
 - Ключевое слово iota представляет последовательные целочисленные константы 0, 1, 2,…
 - Оно обнуляется каждый раз, когда const появляется в исходном коде
