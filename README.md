@@ -57,7 +57,8 @@
   - [ ] Операторы равенства, проверка на равенство, равенство во всем мире, мы топим за ра.., стоп не туда
   - [ ] Менеджмент памяти
   - [ ] Логирование
-  - [ ] Дата и время
+  - [x] [Дата и время](#darker_corners_datetime)
+     - [x] [time.LoadLocation читает из файла](#darker_corners_datetime_1)
 
 __Go__ или __GoLang__ — компилируемый многопоточный язык программирования. Язык был разработан Google для решения проблем корпорации, возникающих при разработке программного обеспечения.
 
@@ -514,4 +515,40 @@ for i := range s {
 }
 
 fmt.Println(s) // [[0 0] [0 0] [0 0]]
+```
+
+
+#### <a name="darker_corners_datetime"></a> Дата и время
+
+<a name="darker_corners_datetime_1"></a> **time.LoadLocation читает из файла**
+
+Одна из моих любимых ловушек в Go. 
+Для преобразования между часовыми поясами вам сначала необходимо загрузить информацию о местоположении. Оказывается, time.LoadLocation читает из файла каждый раз, когда он вызывается. Не самое лучшее решение, анпример, если нам нужно делать это при форматировании каждой строки массивного CSV-отчета:
+
+```go
+package main
+
+import (
+    "testing"
+    "time"
+)
+
+func BenchmarkLocation(b *testing.B) {
+    for n := 0; n < b.N; n++ {
+        loc, _ := time.LoadLocation("Asia/Kolkata")
+        time.Now().In(loc)
+    }
+}
+
+func BenchmarkLocation2(b *testing.B) {
+    loc, _ := time.LoadLocation("Asia/Kolkata")
+    for n := 0; n < b.N; n++ {
+        time.Now().In(loc)
+    }
+}
+
+// Output:
+
+BenchmarkLocation-8 16810 76179 ns/op 58192 B/op 14 allocs/op
+BenchmarkLocation2-8 188887110 6.97 ns/op 0 B/op 0 allocs/op
 ```
