@@ -19,6 +19,9 @@
      - [x] [Тернарный оператор](#darker_corners_operators_2)
   - [x] [Константы](#darker_corners_constants)
      - [x] [iota](#darker_corners_constants_1)
+  - [x] [Срезы и массивы](#darker_corners_array_slice)
+     - [x] [Массивы (slice)](#darker_corners_array_slice_1)
+     - [x] [Срезы (array)](#darker_corners_array_slice_2)
 
 __Go__ или __GoLang__ — компилируемый многопоточный язык программирования. Язык был разработан Google для решения проблем корпорации, возникающих при разработке программного обеспечения.
 
@@ -240,3 +243,239 @@ default:
 Это небольшой набор булевых значений (их часто называют “флагами”), которые представлены битами в одном числе.
 
 Посмотрите [bitmasks](https://yourbasic.org/golang/bitmask-flag-set-clear/) и флаги для полного понимания.
+
+#### <a name="darker_corners_array_slice"> Срезы и массивы
+
+В Go срезы и массивы служат аналогичной цели. Они декларируются примерно так же одинаково:
+
+```go
+slice := []int{1, 2, 3}
+array := [3]int{1, 2, 3}
+// let the compiler work out array length
+// this will be an equivalent of [3]int
+array2 := [...]int{1, 2, 3} 
+fmt.Println(slice, array, array2)
+```
+
+Срезы являются более "продвинутыми" и удобными (по факту срез содержит указатель на массив, об этом чуть ниже), по этой причине массивы используют реже и в каких-то специфических случаях. В самых обычных случаях вы также будете использовать срезы.
+
+<a name="darker_corners_array_slice_1"> **Массивы**
+
+Массив - это типизированный набор памяти фиксированного размера. 
+Массивы разной длины считаются разными несовместимыми типами.
+- В отличие от C, элементы массива инициализируются нулевыми значениями при создании массива, поэтому нет необходимости делать это явно. 
+- Также, в отличие от C в Go, массив - это тип значения. Это не указатель на первый элемент блока памяти. Если вы передадите массив в функцию, будет скопирован весь массив. Вы все равно можете передать указатель на массив, чтобы он не копировался.
+
+<a name="darker_corners_array_slice_2"> **Срезы**
+
+Это очень полезная структура данных, но, возможно, немного необычная. Есть несколько способов выстрелить им себе в ногу, всех которых можно избежать, если вы знаете, как срез работает изнутри. 
+
+Вот так выглядит срез исходном коде Go:
+
+```go
+type slice struct {
+    array unsafe.Pointer
+    len   int
+    cap   int
+}
+```
+
+Сам срез является типом значения, но он ссылается на массив, который он использует, с помощью указателя. В отличие от массива, если вы передадите срез в функцию, вы получите копию указателя массива, свойств `len` и `cap` но данные самого массива не будут скопированы и обе копии (оригинал и в функции) среза будут указывать на один и тот же массив. 
+
+То же самое происходит, когда вы "разрезаете" срез. Нарезка создает новый срез, который по-прежнему указывает на тот же массив:
+
+```go
+func f1(s []int) {
+    // slicing the slice creates a new slice
+    // but does not copy the array data
+    s = s[2:4] 
+    // modifying the sub-slice
+    // changes the array of slice in main function as well
+    for i := range s {
+        s[i] += 10
+    }
+    fmt.Println("f1", s, len(s), cap(s))
+}
+
+func main() {
+    s := []int{1, 2, 3, 4, 5}
+    // passing a slice as an argument
+    // makes a copy of the slice properties (pointer, len and cap)
+    // but the copy shares the same array
+    f1(s)
+    fmt.Println("main", s, len(s), cap(s))
+}
+
+Output:
+
+in function f1 [13 14] 2 3
+in function main [1 2 13 14 5] 5 5
+```
+
+Мы передали срез в фнкцию, "разрезали" (под-срез) его и изменили значения последнего и, как видно, мы изменили оригинальный срез, который находится на самом верхнем уровне в `main`.
+
+Чтобы получить копию среза с данными, вам нужно немного поработать. Вы можете вручную скопировать элементы в новый фрагмент или использовать `copy` или `append`:
+
+```go
+func f1(s []int) {
+    s = s[2:4]
+    s2 := make([]int, len(s))
+    copy(s2, s)
+
+    // or if you prefer less efficient, but more concise version:
+    // s2 := append([]int{}, s[2:4]...)
+
+    for i := range s2 {
+        s2[i] += 10
+    }
+
+    fmt.Println("f1", s2, len(s2), cap(s2))
+}
+
+func main() {
+    s := []int{1, 2, 3, 4, 5}
+    f1(s)
+    fmt.Println("main", s, len(s), cap(s))
+}
+
+Output:
+
+in function f1 [13 14] 2 3
+in function main [1 2 3 4 5] 5 5
+```
+
+Как видим, оригинальный срзе не изменился, т.к. мы скопировали и он больше не указывает на массив первого среза.
+
+Самым полезным свойством среза является то, что он управляет ростом массива за вас. 
+Когда срезу необходимо превысить емкость существующего массива, Go выделит совершенно новый массив с дополнительной емкостью и переместит данные в него (точнее это сделает функция append). 
+Но это является еще одной ловушкой, например, если вы ожидаете что два среза будут указывать на один и тот же массив.
+
+```go
+func main() {
+    // make a slice with length 3 and capacity 4
+    s := make([]int, 3, 4)
+
+    // initialize to 1,2,3
+    s[0] = 1
+    s[1] = 2
+    s[2] = 3
+
+    // capacity of the array is 4
+    // adding one more number fits in the initial array
+    s2 := append(s, 4)
+
+    // modify the elements of the array
+    // s and s2 still share the same array
+    for i := range s2 {
+        s2[i] += 10
+    }
+
+    fmt.Println(s, len(s), cap(s))    // [11 12 13] 3 4
+    fmt.Println(s2, len(s2), cap(s2)) // [11 12 13 14] 4 4
+
+    // this append grows the array past its capacity
+    // new array must be allocated for s3
+    s3 := append(s2, 5)
+
+    // modify the elements of the array to see the result
+    for i := range s3 {
+        s3[i] += 10
+    }
+
+    fmt.Println(s, len(s), cap(s)) // still the old array [11 12 13] 3 4
+    fmt.Println(s2, len(s2), cap(s2)) // the old array [11 12 13 14] 4 4
+
+    // array was copied on last append [21 22 23 24 15] 5 8
+    fmt.Println(s3, len(s3), cap(s3)) 
+}
+```
+
+Еще одной приятной особенностью является то, что срезы не нужно проверять на нулевое значение и не всегда нужно инициализировать. Такие функции, как `len`, `cap` и `append`, отлично работают с нулевым срезом:
+
+```go
+func main() {
+    var s []int // nil slice
+    fmt.Println(s, len(s), cap(s)) // [] 0 0
+    s = append(s, 1)
+    fmt.Println(s, len(s), cap(s)) // [1] 1 1
+}
+```
+
+Но, надо помнить, что пустой срез - это не то же самое, что нулевой срез:
+
+```go
+func main() {
+    var s []int // this is a nil slice
+    s2 := []int{} // this is an empty slice
+
+    // looks like the same thing here:
+    fmt.Println(s, len(s), cap(s)) // [] 0 0
+    fmt.Println(s2, len(s2), cap(s2)) // [] 0 0
+
+    // but s2 is actually allocated somewhere
+    fmt.Printf("%p %p", s, s2) // 0x0 0x65ca90
+}
+```
+
+Еще одна ловушка, когда вы инициализируете срез через `make`:
+
+```go
+s := make([]int, 3)
+s = append(s, 1)
+s = append(s, 2)
+s = append(s, 3)
+```
+
+Как вы думаете, что будет? Вот так выглядит сигнатура `make` для срезов:
+
+```go
+func make([]T, len, cap) []T
+```
+
+Конечно, он инициализирует срез с длиной 3 и емкостью! Т.е. по факту мы сделали следующее: 
+
+```go
+s := make([]int, 3, 3)
+...
+```
+
+И вывод кода выше будет следующим:
+
+```go
+[0 0 0 1 2 3]
+```
+
+Это может привести к неожиданным ошибка, если не понимать работу срезов. Чтобы код выше вывел ожидаемые 1,2,3, нам необходимо изменить инициализацию через `make` след. образомм:
+
+```go
+s := make([]int, 0, 3)
+...
+
+// [1 2 3]
+```
+
+Иногда встречаются варианты с индексированным доступом, что тоже в принципе верно и вполне рабочее:
+
+```go
+s := make([]int, 3, 3)
+    	
+for i, v := range []int{1, 2, 3} {
+	s[i] = v
+}
+	
+fmt.Println(s)
+```
+
+Ну и напоследок покажу многомерные срезы, собственно это же можно проделать и с массивами:
+
+```go
+x := 2
+y := 3
+s := make([][]int, y)
+
+for i := range s {
+    s[i] = make([]int, x)
+}
+
+fmt.Println(s) // [[0 0] [0 0] [0 0]]
+```
