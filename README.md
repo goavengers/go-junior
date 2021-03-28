@@ -15,8 +15,8 @@
   - [x] [Roadmap golang developer](#what_s_next_roadmap)
 - [x] [Подводные камни Go для начинающих](#darker_corners)
   - [ ] [Операторы](#darker_corners_operators)
-     - [ ] [Инкремент и декремент](#darker_corners_operators_1)
-     - [ ] [Тернарный оператор](#darker_corners_operators_2)
+     - [x] [Инкремент и декремент](#darker_corners_operators_1)
+     - [x] [Тернарный оператор](#darker_corners_operators_2)
 
 __Go__ или __GoLang__ — компилируемый многопоточный язык программирования. Язык был разработан Google для решения проблем корпорации, возникающих при разработке программного обеспечения.
 
@@ -114,6 +114,22 @@ P.S. `$ echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile`
 
 <a name="darker_corners_operators_1"></a> **1. Инкремент и декремент**
 
+В отличие от многих других языков, таких как, JS, PHP, Java и т.д., Go не имеет префиксных операторов увеличения (инкремент) или уменьшения (декремент):
 
+```go
+var i int
+++i // syntax error: unexpected ++, expecting }
+--i // syntax error: unexpected --, expecting }
+```
+
+Хотя в Go и есть постфиксные версии этих операторов, но их нельзя использовать в выражениях:
+
+```go
+slice := []int{1,2,3}
+i := 1
+slice[i++] = 0 // syntax error: unexpected ++, expecting :
+```
 
 <a name="darker_corners_operators_2"></a> **2. Тернарный оператор**
+
+Наверное одна из самых частых вещей, которые ищут разработчики перешедшие с других языков - это тернарный оператор. Но тут все просто - его нет. Разработчики языка Go решили, что этот оператор часто приводит к некрасивому коду, и лучше вообще его не использовать.
